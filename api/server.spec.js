@@ -12,6 +12,12 @@ describe("server", () => {
             expect(response.status).toBe(200)
         })
 
+        test("should return the rigth content-length and content-type", async () => {
+            return request(server).get("/")
+            .expect("content-length", "11")
+            .expect("content-type", /html/)
+        })
+
         test("should return the rigth response body", async () => {
             const response = await request(server).get("/")
             expect(response.text).toEqual("It's alive!")
