@@ -6,5 +6,10 @@ describe("server", () => {
         test("test db env", () => {
             expect(process.env.DB_ENV).toBe("testing")
         })
+
+        test("should return status code 200 ok", async () => {
+            const response = await request(server).get("/")
+            expect(response.status).toBe("200")
+        })
     })
 })
