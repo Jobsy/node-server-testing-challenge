@@ -9,7 +9,12 @@ describe("server", () => {
 
         test("should return status code 200 ok", async () => {
             const response = await request(server).get("/")
-            expect(response.status).toBe("200")
+            expect(response.status).toBe(200)
+        })
+
+        test("should return the rigth response body", async () => {
+            const response = await request(server).get("/")
+            expect(response.text).toEqual("It's alive!")
         })
     })
 })
